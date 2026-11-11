@@ -1,0 +1,134 @@
+/* Brands A-Z Filter
+   Colors are controlled from Settings > Brands A-Z (CSS variables below are defaults). */
+.brandsaz {
+  --brandsaz-accent: #C8A56B;
+  --brandsaz-text: #000000;
+  --brandsaz-letter: #000000;
+  --brandsaz-border: #000000;
+  --brandsaz-line: #E6E6E6;
+  --brandsaz-cols: 2;
+  width: 100%;
+  font-family: "Red Hat Display", sans-serif;
+  color: var(--brandsaz-text);
+}
+.brandsaz *, .brandsaz *::before, .brandsaz *::after { box-sizing: border-box; }
+.brandsaz [hidden] { display: none !important; }
+
+/* Search */
+.brandsaz .brandsaz__search { position: relative; margin: 0 0 20px; color: var(--brandsaz-text); }
+.brandsaz .brandsaz__search svg {
+  position: absolute; left: 16px; top: 50%;
+  width: 18px; height: 18px; margin-top: -9px;
+  pointer-events: none;
+}
+.brandsaz .brandsaz__input {
+  display: block; width: 100%; height: 53px; margin: 0;
+  padding: 0 16px 0 44px;
+  border: 1px solid var(--brandsaz-border); border-radius: 0;
+  background: #fff; color: var(--brandsaz-text);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 15px; line-height: normal;
+  box-shadow: none; outline: 0;
+}
+.brandsaz .brandsaz__input::placeholder { color: var(--brandsaz-text); opacity: 1; }
+.brandsaz .brandsaz__input:focus { border-color: var(--brandsaz-border); box-shadow: 0 0 0 2px var(--brandsaz-accent); }
+
+/* A-Z bar */
+.brandsaz .brandsaz__nav {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  min-height: 50px; margin: 0 0 22px; padding: 0 12px;
+  background: var(--brandsaz-accent);
+}
+.brandsaz .brandsaz__letter {
+  flex: 1 1 0; 
+  min-width: 26px;
+  margin: 6px 2px; 
+  padding: 8px 0;
+  border: 0; border-radius: 0;
+  background: transparent; 
+  color: var(--brandsaz-text);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 20px; 
+  font-weight: 700; 
+  line-height: 1.2;
+  text-align: center; 
+  text-transform: none; 
+  letter-spacing: 0;
+  cursor: pointer; 
+  box-shadow: none; 
+  text-shadow: none;
+  -webkit-appearance: none; 
+  appearance: none;
+  transition: background-color .15s ease, color .15s ease;
+}
+.brandsaz .brandsaz__letter:hover,
+.brandsaz .brandsaz__letter:focus { background: rgba(0, 0, 0, .12); color: var(--brandsaz-text); outline: 0; }
+.brandsaz .brandsaz__letter:focus-visible { outline: 2px solid var(--brandsaz-text); outline-offset: -2px; }
+.brandsaz .brandsaz__letter.is-active,
+.brandsaz .brandsaz__letter.is-active:hover,
+.brandsaz .brandsaz__letter.is-active:focus { background: var(--brandsaz-text); color: var(--brandsaz-accent); }
+/* Letters without any brand are faded */
+.brandsaz .brandsaz__letter.is-empty { opacity: .45; }
+.brandsaz .brandsaz__letter.is-empty.is-active { opacity: 1; }
+.brandsaz .brandsaz__letter--all { flex: 0 0 auto; padding: 8px 18px; font-size: 18px; }
+
+/* Groups */
+.brandsaz .brandsaz__group {
+  display: flex; align-items: flex-start; gap: 24px;
+  padding: 26px 0;
+  border-top: 1px solid var(--brandsaz-line);
+}
+.brandsaz .brandsaz__big {
+  flex: 0 0 56px;
+  font-size: 56px; font-weight: 700; line-height: .9;
+  color: var(--brandsaz-letter);
+}
+.brandsaz .brandsaz__list {
+  flex: 1; margin: 0; padding: 0; list-style: none;
+  columns: var(--brandsaz-cols);
+  column-gap: 80px;
+  column-rule: 1px solid var(--brandsaz-line);
+}
+.brandsaz .brandsaz__list li {
+  margin: 0 0 12px; padding: 0; list-style: none;
+  break-inside: avoid; -webkit-column-break-inside: avoid;
+}
+.brandsaz .brandsaz__list li a {
+  color: var(--brandsaz-text);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.brandsaz .brandsaz__list li a:hover { text-decoration: underline; }
+
+/* Empty message */
+.brandsaz .brandsaz__none {
+  margin: 0; padding: 28px 12px;
+  border-top: 1px solid var(--brandsaz-line);
+  text-align: center; font-size: 16px; color: var(--brandsaz-text);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .brandsaz .brandsaz__list { column-gap: 40px; }
+}
+@media (max-width: 767px) {
+  .brandsaz .brandsaz__nav { padding: 4px; }
+  .brandsaz .brandsaz__letter { 
+    flex: 0 0 calc(11.11% - 4px); 
+    min-width: 0; 
+    font-size: 15px; 
+    padding: 6px 0; }
+    
+  .brandsaz .brandsaz__letter--all { flex: 1 1 100%; padding: 8px 0; }
+  .brandsaz .brandsaz__group { flex-direction: column; gap: 10px; padding: 20px 0; }
+  .brandsaz .brandsaz__big { flex: none; font-size: 40px; }
+  .brandsaz .brandsaz__list { columns: 1; column-rule: none; }
+
+  .brandsaz .brandsaz__list li a {
+  color: var(--brandsaz-text);
+  font-size: 13px;
+}
+}
